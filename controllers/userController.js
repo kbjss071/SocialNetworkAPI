@@ -13,8 +13,7 @@ module.exports ={
         User.find()
         .then(async(users)=> {
             const userObj = {
-                users,
-                friendCount: await friendCount()
+                users
             }
             return res.json(userObj);
         })
@@ -31,7 +30,7 @@ module.exports ={
                 if(!user){
                     res.status(404).json({message: 'No user with the ID'})
                 } else {
-                    res.json({user, friendCount: await friendCount()})
+                    res.json(user)
                 }
             })
             .catch((err)=> {
@@ -57,7 +56,7 @@ module.exports ={
 
     //update an user
     updateUser(req, res){
-        User.findOneAndUpdate({_id: req.params.UserId}, req.body, {new: true})
+        User.findOneAndUpdate({_id: req.params.userId}, req.body, {new: true})
         .then((user)=> {
             !user
                 ? res.status(404).json({message: 'No user found with the id'})
