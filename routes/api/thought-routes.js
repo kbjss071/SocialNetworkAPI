@@ -22,7 +22,7 @@ router.route('/:id').get(getSingleThought).put(updateThought).delete(deleteThoug
 // Directs to: /api/thoughts/:thoughtId/reactions <POST>
 router.route('/:thoughtId/reactions').post(addReaction);
 
-// Directs to: /api/thoughts/:thoughtId/reactionId <DELETE>
+// Directs to: /api/thoughts/:thoughtId/reactions/reactionId <DELETE>
 router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction);
 
 module.exports = router;
